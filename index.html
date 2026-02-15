@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Game Portal</title>
+    <style>
+        /* --- 基本設定（シンプル＆カジュアル） --- */
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #4a90e2; /* カジュアルなブルー */
+            font-size: 2rem;
+        }
+
+        header p {
+            color: #777;
+            margin-top: 10px;
+        }
+
+        /* --- グリッドレイアウト --- */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- カードデザイン --- */
+        .game-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 画像エリア（未設定時はグレー） */
+        .game-image {
+            width: 100%;
+            height: 160px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-title {
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+        .game-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .play-button {
+            display: inline-block;
+            background-color: #4a90e2;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .play-button:hover {
+            background-color: #357abd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 600px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>My Game Collection</h1>
+    <p>お好きなゲームを選んで遊んでね！</p>
+</header>
+
+<div class="container">
+    <div class="game-grid">
+        
+        <article class="game-card">
+            <a href="https://sigesige55.github.io/game01/" class="game-image">
+                No Image
+            </a>
+            <div class="game-content">
+                <h2 class="game-title">Game 01</h2>
+                <p class="game-description">
+                    ゲームの簡単な説明がここに入ります。どんなジャンルのゲームか書きましょう。
+                </p>
+                <a href="https://sigesige55.github.io/game01/" class="play-button">遊んでみる</a>
+            </div>
+        </article>
+
+        <script>
+            // 10枚分を自動生成するための簡易スクリプト（実際のファイルではHTMLとして書き出してもOK）
+            const grid = document.querySelector('.game-grid');
+            const currentContent = grid.innerHTML; // Game 01の分を保持
+            grid.innerHTML = ""; // 一旦クリア
+
+            for (let i = 1; i <= 10; i++) {
+                const num = i.toString().padStart(2, '0');
+                grid.innerHTML += `
+                <article class="game-card">
+                    <a href="https://sigesige55.github.io/game${num}/" class="game-image">
+                        Game ${num}
+                    </a>
+                    <div class="game-content">
+                        <h2 class="game-title">Game ${num}</h2>
+                        <p class="game-description">
+                            ここにゲーム${num}の説明文が入ります。後からこのテキストを直接書き換えてください。
+                        </p>
+                        <a href="https://sigesige55.github.io/game${num}/" class="play-button">遊んでみる</a>
+                    </div>
+                </article>
+                `;
+            }
+        </script>
+
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 sigesige55. All Rights Reserved.
+</footer>
+
+</body>
+</html>
